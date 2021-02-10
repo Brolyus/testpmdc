@@ -5,12 +5,12 @@ import Prismic from "prismic-javascript";
 export default function Article({ data }) {
     console.log(data)
   return (
-    <>
-        <h3>test</h3>
-        <h4>{data.date}</h4>
+    <div>
+        <h3>{RichText.asText(data.title)}</h3>
+        <p>{data.date}</p>
+        <img src={data.image.url} alt="" height="400px"/>
         <p>{RichText.asText(data.paragraphe)}</p>
-        <img src={data.image.url} alt="" height="120px"/>
-    </>
+    </div>
   );
 }
 

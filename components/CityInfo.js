@@ -1,7 +1,25 @@
+import styled from "styled-components"
+
+const Section = styled.section`
+width: 720px;
+box-sizing: border-box;
+height: auto;
+margin: 20px;
+padding: 10px;
+box-shadow: 0px 3px 6px #3F3F3F;
+border-radius: 8px;
+`
+
+const Title = styled.h3`
+    font-size: 24px;
+    color: #29B394;
+    text-align: center;
+`
+
 export default function CityInfo({ selectedCity, postalCode }) {
   return (
-    <section>
-      <h3>{`${selectedCity} (${postalCode})`}</h3>
+    <Section>
+      <Title>{`${selectedCity} (${postalCode})`}</Title>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam
         risus, ultricies nec scelerisque ut, dictum ut nisl. Suspendisse gravida
@@ -22,6 +40,6 @@ export default function CityInfo({ selectedCity, postalCode }) {
         nunc. Duis ut velit vitae sem placerat laoreet. Nulla facilisi. Integer
         id ultricies mi, vel dictum nisl.
       </p>
-    </section>
+    </Section>
   );
 }

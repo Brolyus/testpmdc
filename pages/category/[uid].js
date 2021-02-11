@@ -1,6 +1,27 @@
 import { client } from "../../prismic-configuration";
 import Thumbnail from "../../components/Thumbnail";
 import Prismic from "prismic-javascript";
+import styled from "styled-components"
+
+const Layout = styled.div`
+  width: 90%;
+  margin: auto;
+`
+
+const Title = styled.h3`
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: normal;
+`
+
+const List = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+`
+
+const Cat = styled.span`
+  text-transform: capitalize
+`
 
 export default function Category({ data, articles }) {
   //Filter the articles to keep only the articles of the visited category
@@ -9,17 +30,17 @@ export default function Category({ data, articles }) {
   });
 
   return (
-    <div>
-      <h3>
-        Catégorie: <span></span>
-        {data.category}
-      </h3>
-      <ul>
+    <Layout>
+      <Title>
+        Catégorie: <Cat>{data.category}</Cat>
+        
+      </Title>
+      <List>
         {newArticles.map((article) => (
           <Thumbnail article={article} key={article.id} />
         ))}
-      </ul>
-    </div>
+      </List>
+    </Layout>
   );
 }
 

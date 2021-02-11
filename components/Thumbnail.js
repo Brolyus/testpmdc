@@ -18,6 +18,7 @@ const DateParagraphe = styled.p`
     text-align:center;
     border-radius: 3px;
     background-color: #29B394;
+    color: #FFFFFF
 `
 
 const Paragraphe = styled.p`

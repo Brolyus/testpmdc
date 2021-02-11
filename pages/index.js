@@ -7,10 +7,32 @@ import Thumbnail from "../components/Thumbnail";
 import PostCodeForm from "../components/PostCodeForm";
 import CityInfo from "../components/CityInfo";
 
-// const UnorderedList = styled.ul`
-//   list-style: none;
-//   background-color: red
-// `
+
+const Layout = styled.div`
+width: 90%;
+margin: auto;
+display: flex;
+flex-direction: column;
+align-items: center;
+`
+
+const CategoryLayout = styled.div`
+  width: 75%;
+`
+
+const Title = styled.h3`
+font-size: 24px;
+line-height: 32px;
+font-weight: normal;
+text-transform: capitalize;
+padding-left: 40px;
+`
+
+const UnorderedList = styled.ul`
+  display: flex;
+  justify-content: space-between;
+`
+
 
 export default function Home({ categories, articles }) {
   //States, to handle postal code, city and the component to render.
@@ -28,20 +50,26 @@ export default function Home({ categories, articles }) {
   }
 
   return (
-    <div>
+    <Layout>
       {categories.results.map((category) => (
-        <div key={category.id}>
+        <CategoryLayout key={category.id}>
           <Link href="/category/[uid]" as={`/category/${category.uid}`}>
-            <h3>{category.uid}</h3>
+            <Title>{category.uid}</Title>
           </Link>
-          <ul>
-            {articles.results.map((article) => (
+          <UnorderedList>
+            {/* The code below filter articles to retrive only 3 articles from each given category */}
+            {articles.results.filter( article => article.data.category.uid === category.data.category)
+              .slice(0,3)
+              .map((article) => (
               <Thumbnail article={article} key={article.id} />
             ))}
-          </ul>
-        </div>
+          </UnorderedList>
+        </CategoryLayout>
       ))}
-      {!isReasearchDone ? (
+
+      
+      {/* We check if isResearchDone is false, this mean we have to let the form "visible" */
+      !isReasearchDone ? (
         <PostCodeForm
           getCityName={(e) => getCityName(e)}
           postalCode={postalCode}
@@ -50,7 +78,7 @@ export default function Home({ categories, articles }) {
       ) : (
         <CityInfo selectedCity={selectedCity} postalCode={postalCode} />
       )}
-    </div>
+    </Layout>
   );
 }
 

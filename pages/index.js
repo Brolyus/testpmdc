@@ -7,32 +7,31 @@ import Thumbnail from "../components/Thumbnail";
 import PostCodeForm from "../components/PostCodeForm";
 import CityInfo from "../components/CityInfo";
 
-
 const Layout = styled.div`
-width: 90%;
-margin: auto;
-display: flex;
-flex-direction: column;
-align-items: center;
-`
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const CategoryLayout = styled.div`
   width: 75%;
-`
+`;
 
 const Title = styled.h3`
-font-size: 24px;
-line-height: 32px;
-font-weight: normal;
-text-transform: capitalize;
-padding-left: 40px;
-`
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: normal;
+  text-transform: capitalize;
+  padding-left: 40px;
+  cursor: pointer;
+`;
 
 const UnorderedList = styled.ul`
   display: flex;
   justify-content: space-between;
-`
-
+`;
 
 export default function Home({ categories, articles }) {
   //States, to handle postal code, city and the component to render.
@@ -58,26 +57,31 @@ export default function Home({ categories, articles }) {
           </Link>
           <UnorderedList>
             {/* The code below filter articles to retrive only 3 articles from each given category */}
-            {articles.results.filter( article => article.data.category.uid === category.data.category)
-              .slice(0,3)
+            {articles.results
+              .filter(
+                (article) =>
+                  article.data.category.uid === category.data.category
+              )
+              .slice(0, 3)
               .map((article) => (
-              <Thumbnail article={article} key={article.id} />
-            ))}
+                <Thumbnail article={article} key={article.id} />
+              ))}
           </UnorderedList>
         </CategoryLayout>
       ))}
 
-      
-      {/* We check if isResearchDone is false, this mean we have to let the form "visible" */
-      !isReasearchDone ? (
-        <PostCodeForm
-          getCityName={(e) => getCityName(e)}
-          postalCode={postalCode}
-          setPostalCode={(event) => setPostalCode(event)}
-        />
-      ) : (
-        <CityInfo selectedCity={selectedCity} postalCode={postalCode} />
-      )}
+      {
+        /* We check if isResearchDone is false, this mean we have to let the form "visible" */
+        !isReasearchDone ? (
+          <PostCodeForm
+            getCityName={(e) => getCityName(e)}
+            postalCode={postalCode}
+            setPostalCode={(event) => setPostalCode(event)}
+          />
+        ) : (
+          <CityInfo selectedCity={selectedCity} postalCode={postalCode} />
+        )
+      }
     </Layout>
   );
 }

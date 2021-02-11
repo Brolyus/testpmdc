@@ -19,7 +19,9 @@ const Paragraphe = styled.p`
 export default function Footer() {
   return (
     <FooterLayout>
-      <Paragraphe>2021 Permettez moi de construire</Paragraphe>
+      <Paragraphe>
+        2021 Permettez moi de construire. Tous droits réservés.
+      </Paragraphe>
     </FooterLayout>
   );
 }

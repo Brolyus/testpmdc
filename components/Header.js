@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Link from "next/link";
 
 const HeaderLayout = styled.header`
     margin: 0;
@@ -15,18 +16,22 @@ const Paragraphe = styled.p`
   color: white;
   font-size: 16px;
   margin: 10px;
+  cursor: pointer;
 `;
 
 const BoldParagraphe = styled(Paragraphe)`
   font-weight: bold;
   font-size: 24px;
+  cursor: unset;
 `;
 
 export default function Header() {
   return (
     <HeaderLayout>
       <BoldParagraphe>Le Blog</BoldParagraphe>
-      <Paragraphe>Voir les catégories</Paragraphe>
+      <Link href="/" as="/">
+        <Paragraphe>Voir les catégories</Paragraphe>
+      </Link>
     </HeaderLayout>
   );
 }

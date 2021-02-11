@@ -1,20 +1,20 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 const Section = styled.section`
-width: 720px;
-box-sizing: border-box;
-height: auto;
-margin: 20px;
-padding: 10px;
-box-shadow: 0px 3px 6px #3F3F3F;
-border-radius: 8px;
-`
+  width: 720px;
+  box-sizing: border-box;
+  height: auto;
+  margin: 20px;
+  padding: 10px;
+  box-shadow: 0px 3px 6px #3f3f3f;
+  border-radius: 8px;
+`;
 
 const Title = styled.h3`
-    font-size: 24px;
-    color: #29B394;
-    text-align: center;
-`
+  font-size: 24px;
+  color: #29b394;
+  text-align: center;
+`;
 
 export default function CityInfo({ selectedCity, postalCode }) {
   return (
